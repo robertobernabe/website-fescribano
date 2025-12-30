@@ -10,7 +10,7 @@
     "build": "npm run build:css && npm run build:eleventy",
     "start": "npm-run-all build:css --parallel watch:*",
     "serve": "npm start",
-    "test:links": "linkinator _site --recurse --skip \"mailto:\" --silent"
+    "test:links": "linkinator _site --recurse --skip \"mailto: instagram.com\" --silent"
   },
   "keywords": [
     "eleventy",
