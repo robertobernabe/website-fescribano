@@ -1,0 +1,27 @@
+{
+  "name": "Jekyll Development",
+  "image": "mcr.microsoft.com/devcontainers/ruby:3.1",
+
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {}
+  },
+
+  "postCreateCommand": "bundle install",
+
+  "forwardPorts": [4000],
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "rebornix.Ruby",
+        "wingrunr21.vscode-ruby",
+        "kaiwood.endwise"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  },
+
+  "remoteUser": "root"
+}
