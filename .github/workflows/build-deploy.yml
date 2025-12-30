@@ -30,6 +30,9 @@ jobs:
     - name: Build Eleventy site
       run: npm run build:eleventy
     
+    - name: Test links
+      run: npm run test:links
+    
     - name: Upload build artifact
       uses: actions/upload-artifact@v4
       with:

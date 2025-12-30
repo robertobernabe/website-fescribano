@@ -9,7 +9,8 @@
     "watch:eleventy": "eleventy --serve",
     "build": "npm run build:css && npm run build:eleventy",
     "start": "npm-run-all build:css --parallel watch:*",
-    "serve": "npm start"
+    "serve": "npm start",
+    "test:links": "linkinator _site --recurse --skip \"mailto:\" --silent"
   },
   "keywords": [
     "eleventy",
@@ -20,6 +21,7 @@
   "license": "CCA-3.0",
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
+    "linkinator": "^6.0.4",
     "npm-run-all": "^4.1.5",
     "sass": "^1.69.5"
   },
