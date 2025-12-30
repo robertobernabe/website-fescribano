@@ -5,3 +5,7 @@ Gemfile.lock
 *.gem
 .jekyll-cache/
 .vscode/settings.json
+
+# Node.js / Eleventy
+node_modules/
+.env
