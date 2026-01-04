@@ -52,12 +52,14 @@ jobs:
         name: eleventy-site
         path: _site/
     
-    - name: Deploy to hosting via FTP
-      uses: wlixcc/SFTP-Deploy-Action@v1.2.4
-      with:
-        host: ${{ secrets.FTP_SERVER }}
-        username: ${{ secrets.FTP_USERNAME }}
-        password: ${{ secrets.FTP_PASSWORD }} # Or use ssh-key
-        port: 22 # Standard SFTP port
-        local_path: './_site/*'
-        remote_path: '/fescribano/'
+    - name: Configure know hosts
+      run: |
+        mkdir -m 0700 -p $HOME/.ssh
+        touch $HOME/.ssh/known_hosts
+        chmod 0600 $HOME/.ssh/known_hosts
+        ssh-keyscan -H -t rsa "${{ secrets.FTP_SERVER }}" >> $HOME/.ssh/known_hosts
+
+    - name: Deploy via sftp
+      run: |
+        sshpass -p "${{ secrets.FTP_PASSWORD }}" rsync -r -v _site/. ${{ secrets.FTP_USERNAME }}@${{ secrets.FTP_SERVER }}:fescribano/
+      shell: bash
